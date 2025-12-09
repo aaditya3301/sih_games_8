@@ -528,21 +528,23 @@ export default function MetalMayhem() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-amber-50 to-orange-100 flex flex-col items-center justify-center p-2 sm:p-4 relative overflow-hidden">
+    <div className="h-screen bg-gradient-to-br from-yellow-50 via-amber-50 to-orange-100 flex flex-col items-center justify-center p-2 sm:p-4 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10 w-64 h-64 bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-br from-amber-300 to-yellow-400 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="text-center mb-3 sm:mb-6 relative z-10">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 via-orange-600 to-amber-700 mb-2 sm:mb-3 drop-shadow-lg">
-          ⚗️ Metal Mayhem
-        </h1>
-        <p className="text-slate-700 text-sm sm:text-lg font-semibold px-4 bg-white/50 backdrop-blur-sm rounded-full py-2 border border-amber-300 shadow-lg">
-          Catch the right metals and learn chemistry!
-        </p>
-      </div>
+      {!gameStarted && (
+        <div className="text-center mb-3 sm:mb-6 relative z-10">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 via-orange-600 to-amber-700 mb-2 sm:mb-3 drop-shadow-lg">
+            ⚗️ Metal Mayhem
+          </h1>
+          <p className="text-slate-700 text-xs sm:text-lg font-semibold px-4 bg-white/50 backdrop-blur-sm rounded-full py-2 border border-amber-300 shadow-lg">
+            Catch the right metals and learn chemistry!
+          </p>
+        </div>
+      )}
 
       {!gameStarted && !gameOver && !showInstructions && (
         <div className="text-center mb-4 sm:mb-6 relative z-10">
@@ -556,30 +558,30 @@ export default function MetalMayhem() {
       )}
 
       {gameStarted && currentChallenge && (
-        <div className="w-full max-w-4xl mb-3 sm:mb-4 relative z-10 px-2">
-          <div className="bg-gradient-to-r from-white to-amber-50 backdrop-blur-sm rounded-2xl px-4 sm:px-6 py-3 sm:py-4 shadow-lg border-2 border-amber-300 mb-3">
-            <div className="text-slate-600 font-semibold text-xs sm:text-sm uppercase tracking-wider mb-1">
+        <div className="w-full max-w-4xl mb-2 sm:mb-4 relative z-10 px-2">
+          <div className="bg-gradient-to-r from-white to-amber-50 backdrop-blur-sm rounded-xl px-3 sm:px-6 py-2 sm:py-4 shadow-lg border-2 border-amber-300 mb-2">
+            <div className="text-slate-600 font-semibold text-[10px] sm:text-sm uppercase tracking-wider mb-1">
               Challenge:
             </div>
-            <div className="text-lg sm:text-2xl font-black text-amber-700">
+            <div className="text-sm sm:text-2xl font-black text-amber-700">
               {currentChallenge.question}
             </div>
           </div>
 
-          <div className="flex justify-between items-center gap-3">
-            <div className="bg-gradient-to-br from-white to-blue-50 backdrop-blur-sm rounded-2xl px-4 sm:px-6 py-3 shadow-lg border border-blue-200 flex-1">
-              <div className="text-slate-600 font-semibold text-xs sm:text-sm uppercase tracking-wider">Score</div>
-              <div className="text-xl sm:text-3xl font-black text-blue-600">{score}</div>
+          <div className="flex justify-between items-center gap-1 sm:gap-3">
+            <div className="bg-gradient-to-br from-white to-blue-50 backdrop-blur-sm rounded-xl px-2 sm:px-4 py-1 sm:py-2 shadow-lg border border-blue-200 flex-1">
+              <div className="text-slate-600 font-semibold text-[10px] sm:text-xs uppercase tracking-wider">Score</div>
+              <div className="text-base sm:text-2xl font-black text-blue-600">{score}</div>
             </div>
 
-            <div className="bg-gradient-to-br from-white to-red-50 backdrop-blur-sm rounded-2xl px-4 sm:px-6 py-3 shadow-lg border border-red-200 flex-1">
-              <div className="text-slate-600 font-semibold text-xs sm:text-sm uppercase tracking-wider">Lives</div>
-              <div className="text-xl sm:text-3xl font-black text-red-500">{lives}</div>
+            <div className="bg-gradient-to-br from-white to-red-50 backdrop-blur-sm rounded-xl px-2 sm:px-4 py-1 sm:py-2 shadow-lg border border-red-200 flex-1">
+              <div className="text-slate-600 font-semibold text-[10px] sm:text-xs uppercase tracking-wider">Lives</div>
+              <div className="text-base sm:text-2xl font-black text-red-500">{lives}</div>
             </div>
 
-            <div className="bg-gradient-to-br from-white to-purple-50 backdrop-blur-sm rounded-2xl px-4 sm:px-6 py-3 shadow-lg border border-purple-200 flex-1">
-              <div className="text-slate-600 font-semibold text-xs sm:text-sm uppercase tracking-wider">Combo</div>
-              <div className="text-xl sm:text-3xl font-black text-purple-600">{combo}x</div>
+            <div className="bg-gradient-to-br from-white to-purple-50 backdrop-blur-sm rounded-xl px-2 sm:px-4 py-1 sm:py-2 shadow-lg border border-purple-200 flex-1">
+              <div className="text-slate-600 font-semibold text-[10px] sm:text-xs uppercase tracking-wider">Combo</div>
+              <div className="text-base sm:text-2xl font-black text-purple-600">{combo}x</div>
             </div>
           </div>
         </div>
@@ -661,7 +663,6 @@ export default function MetalMayhem() {
       {showInstructions && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-gradient-to-br from-white via-amber-50 to-yellow-50 rounded-3xl p-6 sm:p-10 text-center max-w-3xl shadow-2xl border-4 border-white/30 max-h-[90vh] overflow-y-auto">
-            <div className="text-5xl mb-4">⚗️</div>
             <h2 className="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-orange-600 mb-3">
               Metal Mayhem
             </h2>
@@ -699,23 +700,6 @@ export default function MetalMayhem() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-4 mb-6 border border-blue-200 text-left">
-              <h4 className="font-bold text-lg text-slate-800 mb-3">📚 Learn About:</h4>
-              <div className="grid grid-cols-2 gap-2 text-sm">
-                {metals.slice(0, 4).map(metal => (
-                  <div key={metal.symbol} className="bg-white rounded-lg p-2">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-2xl">{metal.emoji}</span>
-                      <div>
-                        <p className="font-bold text-slate-800">{metal.name}</p>
-                        <p className="text-xs text-slate-600">{metal.symbol}</p>
-                      </div>
-                    </div>
-                    <p className="text-xs text-slate-600">{metal.uses}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
 
             <button
               onClick={() => setShowInstructions(false)}

@@ -314,25 +314,27 @@ export default function FrictionRacers() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sky-100 via-blue-100 to-cyan-100 flex flex-col items-center justify-center p-2 sm:p-4 relative overflow-hidden">
+    <div className="h-screen bg-gradient-to-br from-sky-100 via-blue-100 to-cyan-100 flex flex-col items-center justify-center p-2 sm:p-4 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10 w-64 h-64 bg-gradient-to-br from-blue-300 to-cyan-400 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-br from-cyan-300 to-blue-400 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="text-center mb-3 sm:mb-6 relative z-10">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600 mb-2 sm:mb-3 drop-shadow-lg">
-          🏁 Friction Racers
-        </h1>
-        <p className="text-slate-600 text-sm sm:text-lg font-semibold px-4 bg-white/50 backdrop-blur-sm rounded-full py-2 border border-blue-200 shadow-lg">
-          See how friction affects motion!
-        </p>
-      </div>
+      {!racing && !raceFinished && (
+        <div className="text-center mb-3 sm:mb-6 relative z-10">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600 mb-2 sm:mb-3 drop-shadow-lg">
+            🏁 Friction Racers
+          </h1>
+          <p className="text-slate-600 text-xs sm:text-lg font-semibold px-4 bg-white/50 backdrop-blur-sm rounded-full py-2 border border-blue-200 shadow-lg">
+            See how friction affects motion!
+          </p>
+        </div>
+      )}
 
       {!racing && !raceFinished && !showInstructions && (
-        <div className="mb-4 relative z-10">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 shadow-lg border border-blue-200 mb-4">
+        <div className="mb-4 mt-2 relative z-10">
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 sm:p-6 shadow-lg border border-blue-200 mb-4">
             <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-3 text-center">
               Select a racer to predict the winner:
             </h3>
@@ -341,13 +343,13 @@ export default function FrictionRacers() {
                 <button
                   key={surface.name}
                   onClick={() => setSelectedRacer(surface.name)}
-                  className={`p-3 rounded-xl border-2 transition-all duration-200 ${
+                  className={`p-2 rounded-xl border-2 transition-all duration-200 ${
                     selectedRacer === surface.name
                       ? 'border-blue-500 bg-blue-50 shadow-lg scale-105'
                       : 'border-slate-300 bg-white hover:border-blue-300'
                   }`}
                 >
-                  <div className="text-3xl mb-1">{surface.emoji}</div>
+                  <div className="text-2xl mb-1">{surface.emoji}</div>
                   <div className="font-bold text-sm">{surface.name}</div>
                   <div className="text-xs text-slate-600 mt-1">
                     Friction: {(surface.friction * 100).toFixed(0)}%
@@ -407,7 +409,7 @@ export default function FrictionRacers() {
                   ? 'bg-green-100 border-2 border-green-500' 
                   : 'bg-red-100 border-2 border-red-500'
               }`}>
-                <p className="font-bold text-lg">
+                <p className="font-bold text-black text-lg">
                   {selectedRacer === winner.surface 
                     ? '🎯 Your prediction was correct!' 
                     : `❌ You predicted ${selectedRacer}`}
@@ -455,7 +457,6 @@ export default function FrictionRacers() {
       {showInstructions && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-gradient-to-br from-white via-blue-50 to-cyan-50 rounded-3xl p-6 sm:p-10 text-center max-w-2xl shadow-2xl border-4 border-white/30">
-            <div className="text-5xl mb-4">🏁</div>
             <h2 className="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600 mb-3">
               Friction Racers
             </h2>
@@ -463,7 +464,7 @@ export default function FrictionRacers() {
               Learn About Friction & Motion
             </h3>
             
-            <div className="bg-white rounded-2xl p-6 mb-6 border border-blue-200 text-left">
+            <div className="bg-white rounded-2xl p-4 mb-4 border border-blue-200 text-left">
               <h4 className="font-bold text-lg text-slate-800 mb-3">🎯 How to Play:</h4>
               <div className="space-y-2 text-slate-700">
                 <p className="flex items-start">
@@ -485,7 +486,7 @@ export default function FrictionRacers() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 mb-6 border border-blue-200 text-left">
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-4 mb-4 border border-blue-200 text-left">
               <h4 className="font-bold text-lg text-slate-800 mb-3">📚 Science Concepts:</h4>
               <div className="space-y-3 text-sm text-slate-700">
                 <div className="bg-white rounded-lg p-3">

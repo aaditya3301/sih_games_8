@@ -430,21 +430,23 @@ export default function InterestCalc() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 flex flex-col items-center justify-center p-2 sm:p-4 relative overflow-hidden">
+    <div className="h-screen bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 flex flex-col items-center justify-center p-2 sm:p-4 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 right-10 w-64 h-64 bg-gradient-to-br from-yellow-300 to-amber-400 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-br from-orange-300 to-yellow-400 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="text-center mb-3 sm:mb-6 relative z-10">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-yellow-600 to-orange-600 mb-2 sm:mb-3 drop-shadow-lg">
-          💰 Interest Calc
-        </h1>
-        <p className="text-slate-700 text-sm sm:text-lg font-semibold px-4 bg-white/50 backdrop-blur-sm rounded-full py-2 border border-amber-300 shadow-lg">
-          Master Simple & Compound Interest!
-        </p>
-      </div>
+      {!gameStarted && (
+        <div className="text-center mb-3 sm:mb-6 relative z-10">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-yellow-600 to-orange-600 mb-2 sm:mb-3 drop-shadow-lg">
+            💰 Interest Calc
+          </h1>
+          <p className="text-slate-700 text-sm sm:text-lg font-semibold px-4 bg-white/50 backdrop-blur-sm rounded-full py-2 border border-amber-300 shadow-lg">
+            Master Simple & Compound Interest!
+          </p>
+        </div>
+      )}
 
       {!gameStarted && !gameOver && !showInstructions && (
         <div className="text-center mb-4 sm:mb-6 relative z-10">
@@ -458,60 +460,60 @@ export default function InterestCalc() {
       )}
 
       {gameStarted && currentScenario && (
-        <div className="w-full max-w-4xl relative z-10 px-2 space-y-4">
+        <div className="w-full max-w-4xl relative z-10 px-2 space-y-2 overflow-y-auto max-h-screen">
           {/* Stats Bar */}
-          <div className="flex justify-between items-center gap-3">
-            <div className="bg-gradient-to-br from-white to-blue-50 backdrop-blur-sm rounded-2xl px-4 sm:px-6 py-3 shadow-lg border border-blue-200 flex-1">
-              <div className="text-slate-600 font-semibold text-xs sm:text-sm uppercase tracking-wider">Score</div>
-              <div className="text-xl sm:text-3xl font-black text-blue-600">{score}</div>
+          <div className="flex justify-between items-center gap-1 sm:gap-3">
+            <div className="bg-gradient-to-br from-white to-blue-50 backdrop-blur-sm rounded-xl px-2 sm:px-4 py-1 sm:py-2 shadow-lg border border-blue-200 flex-1">
+              <div className="text-slate-600 font-semibold text-[10px] sm:text-xs uppercase tracking-wider">Score</div>
+              <div className="text-base sm:text-2xl font-black text-blue-600">{score}</div>
             </div>
 
-            <div className="bg-gradient-to-br from-white to-purple-50 backdrop-blur-sm rounded-2xl px-4 sm:px-6 py-3 shadow-lg border border-purple-200 flex-1">
-              <div className="text-slate-600 font-semibold text-xs sm:text-sm uppercase tracking-wider">Level</div>
-              <div className="text-xl sm:text-3xl font-black text-purple-600">{level}</div>
+            <div className="bg-gradient-to-br from-white to-purple-50 backdrop-blur-sm rounded-xl px-2 sm:px-4 py-1 sm:py-2 shadow-lg border border-purple-200 flex-1">
+              <div className="text-slate-600 font-semibold text-[10px] sm:text-xs uppercase tracking-wider">Level</div>
+              <div className="text-base sm:text-2xl font-black text-purple-600">{level}</div>
             </div>
 
-            <div className="bg-gradient-to-br from-white to-red-50 backdrop-blur-sm rounded-2xl px-4 sm:px-6 py-3 shadow-lg border border-red-200 flex-1">
-              <div className="text-slate-600 font-semibold text-xs sm:text-sm uppercase tracking-wider">Lives</div>
-              <div className="text-xl sm:text-3xl font-black text-red-500">{lives}</div>
+            <div className="bg-gradient-to-br from-white to-red-50 backdrop-blur-sm rounded-xl px-2 sm:px-4 py-1 sm:py-2 shadow-lg border border-red-200 flex-1">
+              <div className="text-slate-600 font-semibold text-[10px] sm:text-xs uppercase tracking-wider">Lives</div>
+              <div className="text-base sm:text-2xl font-black text-red-500">{lives}</div>
             </div>
 
-            <div className="bg-gradient-to-br from-white to-green-50 backdrop-blur-sm rounded-2xl px-4 sm:px-6 py-3 shadow-lg border border-green-200 flex-1">
-              <div className="text-slate-600 font-semibold text-xs sm:text-sm uppercase tracking-wider">Time</div>
-              <div className="text-xl sm:text-3xl font-black text-green-600">{timeLeft}s</div>
+            <div className="bg-gradient-to-br from-white to-green-50 backdrop-blur-sm rounded-xl px-2 sm:px-4 py-1 sm:py-2 shadow-lg border border-green-200 flex-1">
+              <div className="text-slate-600 font-semibold text-[10px] sm:text-xs uppercase tracking-wider">Time</div>
+              <div className="text-base sm:text-2xl font-black text-green-600">{timeLeft}s</div>
             </div>
           </div>
 
           {/* Scenario Card */}
-          <div className="bg-gradient-to-br from-white to-amber-50 backdrop-blur-sm rounded-3xl p-6 shadow-2xl border-2 border-amber-300">
-            <div className="text-center mb-4">
-              <div className="text-6xl mb-2">{currentScenario.emoji}</div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-2">
+          <div className="bg-gradient-to-br from-white to-amber-50 backdrop-blur-sm rounded-2xl p-3 sm:p-6 shadow-2xl border-2 border-amber-300">
+            <div className="text-center mb-2 sm:mb-4">
+              <div className="text-4xl sm:text-6xl mb-1 sm:mb-2">{currentScenario.emoji}</div>
+              <h2 className="text-lg sm:text-3xl font-bold text-slate-800 mb-1 sm:mb-2">
                 {currentScenario.title}
               </h2>
-              <p className="text-slate-600 text-sm sm:text-base mb-4">
+              <p className="text-slate-600 text-xs sm:text-base mb-2 sm:mb-4">
                 {currentScenario.context}
               </p>
-              <div className="inline-block bg-amber-100 border-2 border-amber-400 rounded-xl px-4 py-2">
-                <p className="font-bold text-amber-800">
+              <div className="inline-block bg-amber-100 border-2 border-amber-400 rounded-xl px-3 py-1 sm:px-4 sm:py-2">
+                <p className="font-bold text-amber-800 text-xs sm:text-base">
                   {currentScenario.description}
                 </p>
               </div>
             </div>
 
             {/* Values Display */}
-            <div className="grid grid-cols-3 gap-3 mb-4">
-              <div className="bg-white rounded-xl p-3 border-2 border-blue-300 text-center">
-                <div className="text-xs text-slate-600 font-semibold">Principal (P)</div>
-                <div className="text-xl font-black text-blue-600">₹{currentScenario.principal}</div>
+            <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-2 sm:mb-4">
+              <div className="bg-white rounded-xl p-2 sm:p-3 border-2 border-blue-300 text-center">
+                <div className="text-[10px] sm:text-xs text-slate-600 font-semibold">Principal (P)</div>
+                <div className="text-sm sm:text-xl font-black text-blue-600">₹{currentScenario.principal}</div>
               </div>
-              <div className="bg-white rounded-xl p-3 border-2 border-green-300 text-center">
-                <div className="text-xs text-slate-600 font-semibold">Rate (R)</div>
-                <div className="text-xl font-black text-green-600">{currentScenario.rate}%</div>
+              <div className="bg-white rounded-xl p-2 sm:p-3 border-2 border-green-300 text-center">
+                <div className="text-[10px] sm:text-xs text-slate-600 font-semibold">Rate (R)</div>
+                <div className="text-sm sm:text-xl font-black text-green-600">{currentScenario.rate}%</div>
               </div>
-              <div className="bg-white rounded-xl p-3 border-2 border-purple-300 text-center">
-                <div className="text-xs text-slate-600 font-semibold">Time (T)</div>
-                <div className="text-xl font-black text-purple-600">{currentScenario.time} yrs</div>
+              <div className="bg-white rounded-xl p-2 sm:p-3 border-2 border-purple-300 text-center">
+                <div className="text-[10px] sm:text-xs text-slate-600 font-semibold">Time (T)</div>
+                <div className="text-sm sm:text-xl font-black text-purple-600">{currentScenario.time} yrs</div>
               </div>
             </div>
 
@@ -561,7 +563,7 @@ export default function InterestCalc() {
                       onChange={(e) => setUserAnswer(e.target.value)}
                       onKeyPress={handleKeyPress}
                       placeholder="Enter interest amount"
-                      className="w-full pl-12 pr-4 py-4 text-xl font-bold border-3 border-amber-300 rounded-xl focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
+                      className="w-full pl-12 pr-4 py-4 text-black text-xl font-bold border-3 border-amber-300 rounded-xl focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200"
                       autoFocus
                     />
                   </div>
@@ -598,15 +600,17 @@ export default function InterestCalc() {
             )}
           </div>
 
-          {/* Coin Animation Canvas */}
-          <div className="flex justify-center">
-            <canvas
-              ref={canvasRef}
-              width={canvasSize.width}
-              height={canvasSize.height}
-              className="border-4 border-white/30 rounded-3xl shadow-2xl bg-white max-w-full"
-            />
-          </div>
+          {/* Coin Animation Canvas - hidden on mobile during gameplay */}
+          {coins.length > 0 && (
+            <div className="hidden sm:flex justify-center">
+              <canvas
+                ref={canvasRef}
+                width={canvasSize.width}
+                height={canvasSize.height}
+                className="border-4 border-white/30 rounded-3xl shadow-2xl bg-white max-w-full"
+              />
+            </div>
+          )}
         </div>
       )}
 
@@ -704,24 +708,6 @@ export default function InterestCalc() {
                 <p className="flex items-start">
                   <span className="text-orange-500 font-bold mr-3">•</span>
                   <span>You have 3 lives - make them count!</span>
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-4 border border-blue-200 text-left">
-                <h4 className="font-bold text-blue-800 mb-2">📐 Simple Interest</h4>
-                <p className="text-sm font-mono text-blue-900 mb-2">SI = (P × R × T) / 100</p>
-                <p className="text-xs text-blue-700">
-                  Interest stays constant over time
-                </p>
-              </div>
-
-              <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-4 border border-purple-200 text-left">
-                <h4 className="font-bold text-purple-800 mb-2">📈 Compound Interest</h4>
-                <p className="text-sm font-mono text-purple-900 mb-2">CI = P(1 + R/100)^T - P</p>
-                <p className="text-xs text-purple-700">
-                  Interest grows exponentially
                 </p>
               </div>
             </div>

@@ -616,7 +616,7 @@ export default function InterestCalc() {
 
       {gameStarted && !gameOver && (
         <Link
-          href="/maths"
+          href="https://eklavyaa.vercel.app/chapters/class-8/maths-wonder"
           className="mt-4 text-slate-600 hover:text-amber-600 transition-all duration-300 font-semibold relative z-10 text-sm sm:text-base bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full border border-amber-200 hover:border-amber-400 hover:shadow-lg transform hover:scale-105"
         >
           ← Back to Math Games
@@ -651,7 +651,7 @@ export default function InterestCalc() {
                 🔄 Play Again
               </button>
               <Link
-                href="/maths"
+                href="https://eklavyaa.vercel.app/chapters/class-8/maths-wonder"
                 className="block w-full bg-slate-500 hover:bg-slate-600 text-white font-semibold py-3 px-6 rounded-xl transition-colors duration-200"
               >
                 ← Back to Math Games
@@ -663,7 +663,7 @@ export default function InterestCalc() {
 
       {!gameStarted && !gameOver && !showInstructions && (
         <Link
-          href="/maths"
+          href="https://eklavyaa.vercel.app/chapters/class-8/maths-wonder"
           className="mt-4 sm:mt-6 text-slate-600 hover:text-amber-600 transition-all duration-300 font-semibold relative z-10 text-sm sm:text-base bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full border border-amber-200 hover:border-amber-400 hover:shadow-lg transform hover:scale-105"
         >
           ← Back to Math Games

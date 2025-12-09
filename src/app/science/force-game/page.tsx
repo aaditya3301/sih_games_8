@@ -434,7 +434,7 @@ export default function FrictionRacers() {
                 🔄 Race Again
               </button>
               <Link
-                href="/science"
+                href="https://eklavyaa.vercel.app/chapters/class-8/science-wonder"
                 className="block w-full bg-slate-500 hover:bg-slate-600 text-white font-semibold py-3 px-6 rounded-xl transition-colors duration-200"
               >
                 ← Back to Science Games
@@ -446,7 +446,7 @@ export default function FrictionRacers() {
 
       {!racing && !raceFinished && !showInstructions && (
         <Link
-          href="/science"
+          href="https://eklavyaa.vercel.app/chapters/class-8/science-wonder"
           className="mt-4 sm:mt-6 text-slate-600 hover:text-blue-600 transition-all duration-300 font-semibold relative z-10 text-sm sm:text-base bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full border border-blue-200 hover:border-blue-400 hover:shadow-lg transform hover:scale-105"
         >
           ← Back to Science Games
